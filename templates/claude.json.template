@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "agentmemory": {
+      "command": "npx",
+      "args": ["-y", "@agentmemory/agentmemory", "serve", "--stdio"],
+      "env": {}
+    },
+    "codegraph": {
+      "command": "npx",
+      "args": ["-y", "@colbymchenry/codegraph", "serve", "--mcp"],
+      "env": {}
+    },
+    "n8n-mcp": {
+      "command": "npx",
+      "args": ["-y", "@n8n-io/n8n-mcp"],
+      "env": {
+        "N8N_BASE_URL": "$N8N_BASE_URL",
+        "N8N_API_KEY": "$N8N_API_KEY"
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+# Hermes Stack — agent configuration
+# Rendered into ~/.hermes/config.yaml by the setup wizard.
+
+version: 1
+
+# ---------- Model Routing ----------
+routing:
+  primary: "$PRIMARY_MODEL"
+  fallback: "$FALLBACK_MODEL"
+  # Per-task overrides. Anything not listed uses `primary`.
+  overrides:
+    code_review: "$FALLBACK_MODEL"
+    long_context: "$FALLBACK_MODEL"
+    cheap_chat: "$PRIMARY_MODEL"
+
+# ---------- Providers ----------
+providers:
+  openrouter:
+    base_url: "https://openrouter.ai/api/v1"
+    api_key_env: "OPENROUTER_API_KEY"
+    default_headers:
+      HTTP-Referer: "https://hermes.local"
+      X-Title: "Hermes Stack"
+
+  anthropic:
+    base_url: "https://api.anthropic.com"
+    api_key_env: "ANTHROPIC_API_KEY"
+    anthropic_version: "2023-06-01"
+
+# ---------- Toolsets ----------
+# Which capabilities Hermes is allowed to use.
+toolsets:
+  filesystem: true
+  shell: true
+  web_fetch: true
+  web_search: true
+  memory: true
+  codegraph: true
+  email: false       # toggle on after Google OAuth is wired
+  calendar: false
+  drive: false
+  n8n: $N8N_ENABLED
+
+# ---------- Chat Gateway ----------
+gateway:
+  chat_platform: "$CHAT_PLATFORM"   # discord | slack | telegram | none
+  command_prefix: "!"
+  allow_dm_only: true
+
+# ---------- Automation ----------
+n8n:
+  enabled: $N8N_ENABLED
+  base_url: "$N8N_BASE_URL"
+
+# ---------- Limits ----------
+limits:
+  max_tokens_per_turn: 8000
+  max_tool_calls_per_turn: 24
+  request_timeout_seconds: 120
