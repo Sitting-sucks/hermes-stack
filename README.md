@@ -12,7 +12,17 @@ curl -fsSL https://raw.githubusercontent.com/Sitting-sucks/hermes-stack/main/ins
 - **Claude Code** — coding agent with Opus-level reasoning
 - **agentmemory** — remembers everything across sessions
 - **codegraph** — instant code understanding, no grep
+- **understand-anything** — visual knowledge graph with guided tours & business domain mapping
 - **n8n-mcp** — workflow automation via natural language
+- **claude-context-mcp** — semantic code search via hybrid BM25 + dense vector retrieval
+- **browser-use** — browser automation for AI agents (navigate, fill forms, extract data)
+- **graphify** — multimodal knowledge graphs from code, docs, PDFs, images (type `/graphify`)
+- **open-multi-agent** — TypeScript-native multi-agent orchestration (goal→task DAG→result)
+- **jcodemunch-mcp** — token-efficient code retrieval (cuts code-reading tokens by 95%+)
+- **OpenSpace** — self-evolving skills engine. 46% fewer tokens, auto-fixes broken skills, shares knowledge across all agents
+- **last30days-skill** — research any topic across Reddit, X, YouTube, HN, Polymarket, GitHub — scored by social signals, not SEO
+- **fastapi-mcp** — auto-expose any FastAPI endpoint as MCP tools for AI agents (adds MCP to your APIs in 3 lines)
+- **Caliber** — auto-generates and maintains AI agent configs (CLAUDE.md, .cursorrules, MCP configs) so they never go stale
 - **20+ professional skills** — engineering workflows pre-loaded
 - **Smart model routing** — deepseek primary, Claude fallback
 - **Chat platform** — talk to your AI on Discord, Slack, or Telegram

@@ -468,6 +468,9 @@ This machine is configured by the Hermes Stack installer.
 - `agentmemory` — durable memory across sessions
 - `codegraph` — symbol-aware code intelligence
 
+## Active skills
+- `understand-anything` — visual knowledge graph for codebase exploration (run `/understand`)
+
 ## Chat platform
 - {chat if chat != "none" else "none configured"}
 

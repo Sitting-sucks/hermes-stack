@@ -217,6 +217,9 @@ install_npm_packages() {
         "@anthropic-ai/claude-code"
         "@agentmemory/agentmemory"
         "@colbymchenry/codegraph"
+        "@zilliz/claude-context-mcp"
+        "@open-multi-agent/core"
+        "@rely-ai/caliber"
     )
 
     for pkg in "${packages[@]}"; do
@@ -227,6 +230,62 @@ install_npm_packages() {
             ok "$pkg installed"
         fi
     done
+}
+
+install_understand_anything() {
+    step "Installing Understand-Anything (visual codebase knowledge graph)"
+    local install_script_url="https://raw.githubusercontent.com/Lum1104/Understand-Anything/main/install.sh"
+    local tmp_script="/tmp/understand-anything-install.sh"
+    if curl -fsSL -o "$tmp_script" "$install_script_url"; then
+        if bash "$tmp_script" hermes >/dev/null 2>&1; then
+            ok "Understand-Anything installed for Hermes"
+        else
+            warn "Understand-Anything install failed — skipping (non-critical)"
+        fi
+        rm -f "$tmp_script"
+    else
+        warn "Could not download Understand-Anything installer — skipping (non-critical)"
+    fi
+}
+
+install_jcodemunch() {
+    step "Installing jcodemunch-mcp (token-efficient code retrieval)"
+    if command -v jcodemunch-mcp 2>/dev/null; then
+        ok "jcodemunch-mcp already installed"
+        return 0
+    fi
+    if pip install git+https://github.com/jgravelle/jcodemunch-mcp.git 2>/dev/null || \
+       pip3 install git+https://github.com/jgravelle/jcodemunch-mcp.git 2>/dev/null; then
+        ok "jcodemunch-mcp installed"
+    else
+        warn "jcodemunch-mcp install failed — skipping (non-critical)"
+    fi
+}
+
+install_browser_use() {
+    step "Installing browser-use (browser automation for AI agents)"
+    if python3 -c "import browser_use" 2>/dev/null; then
+        ok "browser-use Python package already installed"
+        return 0
+    fi
+    if pip install browser-use 2>/dev/null || pip3 install browser-use 2>/dev/null; then
+        ok "browser-use installed"
+    else
+        warn "browser-use install failed — skipping (non-critical)"
+    fi
+}
+
+install_fastapi_mcp() {
+    step "Installing fastapi-mcp (FastAPI → MCP tool exporter)"
+    if python3 -c "import fastapi_mcp" 2>/dev/null; then
+        ok "fastapi-mcp already installed"
+        return 0
+    fi
+    if pip install fastapi-mcp 2>/dev/null || pip3 install fastapi-mcp 2>/dev/null; then
+        ok "fastapi-mcp installed"
+    else
+        warn "fastapi-mcp install failed — skipping (non-critical)"
+    fi
 }
 
 # ---------- main ----------
@@ -249,8 +308,11 @@ main() {
     install_node
     install_python_deps
     install_npm_packages
+    install_jcodemunch
+    install_browser_use
+    install_fastapi_mcp
 
-    step "Launching the Hermes setup wizard"
+step "Launching the Hermes setup wizard"
     local script_dir
     script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     cd "$script_dir"
@@ -259,7 +321,70 @@ main() {
         die "wizard.py not found in $script_dir"
     fi
 
-    exec python3 "$script_dir/wizard.py" --installer-dir "$script_dir" --platform "$OS"
+    python3 "$script_dir/wizard.py" --installer-dir "$script_dir" --platform "$OS"
+    local wizard_exit=$?
+
+    if [[ $wizard_exit -eq 0 ]]; then
+        install_understand_anything
+        step "Installing optional stack components"
+        local script_dir
+        script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+        if [[ -f "$script_dir/components/stop-slop-setup.sh" ]]; then
+            bash "$script_dir/components/stop-slop-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/taste-skill-setup.sh" ]]; then
+            bash "$script_dir/components/taste-skill-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/x-mcp-setup.sh" ]]; then
+            bash "$script_dir/components/x-mcp-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/mcp-x-intelligence-setup.sh" ]]; then
+            bash "$script_dir/components/mcp-x-intelligence-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/browser-use-setup.sh" ]]; then
+            bash "$script_dir/components/browser-use-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/claude-context-mcp-setup.sh" ]]; then
+            bash "$script_dir/components/claude-context-mcp-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/markitdown-setup.sh" ]]; then
+            bash "$script_dir/components/markitdown-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/compound-engineering-setup.sh" ]]; then
+            bash "$script_dir/components/compound-engineering-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/graphify-setup.sh" ]]; then
+            bash "$script_dir/components/graphify-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/open-multi-agent-setup.sh" ]]; then
+            bash "$script_dir/components/open-multi-agent-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/fastapi-mcp-setup.sh" ]]; then
+            bash "$script_dir/components/fastapi-mcp-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/caliber-setup.sh" ]]; then
+            bash "$script_dir/components/caliber-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/headroom-setup.sh" ]]; then
+            bash "$script_dir/components/headroom-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/spec-kit-setup.sh" ]]; then
+            bash "$script_dir/components/spec-kit-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/gitingest-setup.sh" ]]; then
+            bash "$script_dir/components/gitingest-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/openspace-setup.sh" ]]; then
+            bash "$script_dir/components/openspace-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/last30days-setup.sh" ]]; then
+            bash "$script_dir/components/last30days-setup.sh"
+        fi
+        step "Hermes Stack setup complete!"
+        log "Run 'claude' in any project directory to start."
+    else
+        warn "Wizard exited with code $wizard_exit — skipping post-install steps."
+    fi
 }
 
 main "$@"

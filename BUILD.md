@@ -36,6 +36,8 @@ Generates these files in the user's home directory:
 
 Installs skills from templates/ to `~/.claude/skills/`
 
+Copies Understand-Anything skills to `~/.hermes/skills/` for visual codebase exploration
+
 Sets up agentmemory server
 Runs codegraph init in their projects
 Configures n8n-mcp

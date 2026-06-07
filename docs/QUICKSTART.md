@@ -12,6 +12,7 @@ Welcome. The installer has just configured your AI teammate. This guide gets you
 | `~/.claude/CLAUDE.md` | Project-wide context every Claude Code session reads. |
 | `~/.claude/settings.json` | Permission allowlist and env overrides. |
 | `~/.claude/skills/` | Bundled skills, auto-discovered by Claude Code. |
+| `~/.hermes/skills/understand-anything/` | Visual knowledge graph skills for codebase exploration. |
 
 ## First commands
 
@@ -26,8 +27,6 @@ You'll get an interactive terminal. The `agentmemory` and `codegraph` MCP server
 
 ### 2. Index a codebase with CodeGraph
 
-In a project directory:
-
 ```sh
 codegraph init -i
 ```
@@ -40,7 +39,31 @@ This builds a tree-sitter knowledge graph at `.codegraph/`. After this, ask Clau
 
 CodeGraph answers structurally, not by grepping.
 
-### 3. Try the memory layer
+### 3. Explore with Understand-Anything
+
+In any project directory, run:
+
+```sh
+/understand
+```
+
+This builds an interactive knowledge graph. Launch the dashboard:
+
+```sh
+/understand-dashboard
+```
+
+Then ask questions:
+
+```sh
+/understand-chat "How does the payment flow work?"
+/understand-explain src/auth/login.ts
+/understand-onboard
+```
+
+Understand-Anything gives you a visual, explorable map of your codebase — great for onboarding, architecture reviews, and seeing how business domains map to code.
+
+### 4. Try the memory layer
 
 In any Claude Code session:
 
@@ -48,7 +71,7 @@ In any Claude Code session:
 
 The next session will recall it. Memory is stored locally in the `agentmemory` SQLite database.
 
-### 4. Switch models on the fly
+### 5. Switch models on the fly
 
 In `~/.hermes/config.yaml`, edit `routing.primary` or `routing.fallback`. Changes take effect on next session.
 
@@ -90,6 +113,8 @@ The Google MCP servers are not installed by default — they require a one-time 
 
 ```sh
 npm update -g @anthropic-ai/claude-code @agentmemory/agentmemory @colbymchenry/codegraph
+# Update Understand-Anything (if installed):
+curl -fsSL https://raw.githubusercontent.com/Lum1104/Understand-Anything/main/install.sh | bash -s -- --update
 ```
 
 Re-run the installer at any time to re-render config files — your existing `~/.claude.json` is merged, not overwritten.
