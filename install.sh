@@ -380,6 +380,18 @@ step "Launching the Hermes setup wizard"
         if [[ -f "$script_dir/components/last30days-setup.sh" ]]; then
             bash "$script_dir/components/last30days-setup.sh"
         fi
+        if [[ -f "$script_dir/components/open-notebook-setup.sh" ]]; then
+            bash "$script_dir/components/open-notebook-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/gemini-cli-setup.sh" ]]; then
+            bash "$script_dir/components/gemini-cli-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/contextgem-setup.sh" ]]; then
+            bash "$script_dir/components/contextgem-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/agent-skills-setup.sh" ]]; then
+            bash "$script_dir/components/agent-skills-setup.sh"
+        fi
         step "Hermes Stack setup complete!"
         log "Run 'claude' in any project directory to start."
     else

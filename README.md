@@ -23,6 +23,10 @@ curl -fsSL https://raw.githubusercontent.com/Sitting-sucks/hermes-stack/main/ins
 - **last30days-skill** — research any topic across Reddit, X, YouTube, HN, Polymarket, GitHub — scored by social signals, not SEO
 - **fastapi-mcp** — auto-expose any FastAPI endpoint as MCP tools for AI agents (adds MCP to your APIs in 3 lines)
 - **Caliber** — auto-generates and maintains AI agent configs (CLAUDE.md, .cursorrules, MCP configs) so they never go stale
+- **Open Notebook** — self-hosted NotebookLM alternative. Turn research docs into podcasts, summaries, and multi-model AI research briefs. 18+ AI providers. Part of the Sitting Sucks content pipeline.
+- **Gemini CLI** — Google's open-source terminal AI agent. Free Gemini 2.5 Pro with 1M token context. Backup coding agent with Google Search grounding. 60 req/min, 1000 req/day free.
+- **ContextGem** — LLM-powered structured data extraction from documents. Contracts, reports, research papers → structured JSON with paragraph-level references and justifications. Part of the Sitting Sucks content pipeline.
+- **agent-skills (addyosmani)** — production-grade engineering skills from Google Chrome's Addy Osmani. 7 slash commands (/spec, /plan, /build, /test, /review, /ship, /code-simplify), 23 skills total. Encodes Google engineering culture: spec-driven development, test-first, security review, trunk-based deployment.
 - **20+ professional skills** — engineering workflows pre-loaded
 - **Smart model routing** — deepseek primary, Claude fallback
 - **Chat platform** — talk to your AI on Discord, Slack, or Telegram
