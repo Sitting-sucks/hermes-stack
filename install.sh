@@ -380,6 +380,12 @@ step "Launching the Hermes setup wizard"
         if [[ -f "$script_dir/components/last30days-setup.sh" ]]; then
             bash "$script_dir/components/last30days-setup.sh"
         fi
+        if [[ -f "$script_dir/components/claude-hud-setup.sh" ]]; then
+            bash "$script_dir/components/claude-hud-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/superpowers-setup.sh" ]]; then
+            bash "$script_dir/components/superpowers-setup.sh"
+        fi
         step "Hermes Stack setup complete!"
         log "Run 'claude' in any project directory to start."
     else

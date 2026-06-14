@@ -26,6 +26,8 @@ curl -fsSL https://raw.githubusercontent.com/Sitting-sucks/hermes-stack/main/ins
 - **20+ professional skills** — engineering workflows pre-loaded
 - **Smart model routing** — deepseek primary, Claude fallback
 - **Chat platform** — talk to your AI on Discord, Slack, or Telegram
+- **Claude HUD** — real-time heads-up display for Claude Code. Context health, tool activity, subagent tracking, rate limits — always visible below your input
+- **Superpowers** — battle-tested agentic dev methodology (227K+ stars). Enforces design → plan → TDD → review workflow so your agent ships clean code
 
 ## Prerequisites — What You Need
 
