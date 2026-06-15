@@ -16,6 +16,8 @@ curl -fsSL https://raw.githubusercontent.com/Sitting-sucks/hermes-stack/main/ins
 - **n8n-mcp** — workflow automation via natural language
 - **claude-context-mcp** — semantic code search via hybrid BM25 + dense vector retrieval
 - **browser-use** — browser automation for AI agents (navigate, fill forms, extract data)
+- **Webwright** — Microsoft Research's SOTA browser agent (86.7% Mind2Web, 60.1% Odysseys). Terminal-native: writes Playwright code, not click coordinates. Installed as Hermes skill + CLI tool.
+- **SkillSpector** — NVIDIA's security scanner for AI agent skills. 64 vulnerability patterns across 16 categories. Scans every skill before installation. Catches prompt injection, data exfiltration, malicious code execution — before they reach your stack. v2.1.4, Apache 2.0.
 - **graphify** — multimodal knowledge graphs from code, docs, PDFs, images (type `/graphify`)
 - **open-multi-agent** — TypeScript-native multi-agent orchestration (goal→task DAG→result)
 - **jcodemunch-mcp** — token-efficient code retrieval (cuts code-reading tokens by 95%+)
@@ -26,7 +28,7 @@ curl -fsSL https://raw.githubusercontent.com/Sitting-sucks/hermes-stack/main/ins
 - **Open Notebook** — self-hosted NotebookLM alternative. Turn research docs into podcasts, summaries, and multi-model AI research briefs. 18+ AI providers. Part of the Sitting Sucks content pipeline.
 - **Gemini CLI** — Google's open-source terminal AI agent. Free Gemini 2.5 Pro with 1M token context. Backup coding agent with Google Search grounding. 60 req/min, 1000 req/day free.
 - **ContextGem** — LLM-powered structured data extraction from documents. Contracts, reports, research papers → structured JSON with paragraph-level references and justifications. Part of the Sitting Sucks content pipeline.
-- **agent-skills (addyosmani)** — production-grade engineering skills from Google Chrome's Addy Osmani. 7 slash commands (/spec, /plan, /build, /test, /review, /ship, /code-simplify), 23 skills total. Encodes Google engineering culture: spec-driven development, test-first, security review, trunk-based deployment.
+- **agent-skills (addyosmani)** — production-grade engineering skills from Google Chrome's Addy Osmani. v0.6.0: 7 slash commands, 24 skills, 3-tier orchestration (Personas → Skills → Commands). Parallel /ship runs code-reviewer, security-auditor, and test-engineer concurrently. New: doubt-driven-development (adversarial fresh-context review on in-flight decisions), source-driven-development (grounds framework decisions in official docs). Encodes Google engineering culture: spec-driven, test-first, security review, trunk-based deployment.
 - **20+ professional skills** — engineering workflows pre-loaded
 - **Smart model routing** — deepseek primary, Claude fallback
 - **Chat platform** — talk to your AI on Discord, Slack, or Telegram

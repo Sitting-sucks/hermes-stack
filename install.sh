@@ -392,6 +392,13 @@ step "Launching the Hermes setup wizard"
         if [[ -f "$script_dir/components/agent-skills-setup.sh" ]]; then
             bash "$script_dir/components/agent-skills-setup.sh"
         fi
+        if [[ -f "$script_dir/components/webwright-setup.sh" ]]; then
+            bash "$script_dir/components/webwright-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/skillspector-setup.sh" ]]; then
+            echo ""
+            bash "$script_dir/components/skillspector-setup.sh"
+        fi
         step "Hermes Stack setup complete!"
         log "Run 'claude' in any project directory to start."
     else
