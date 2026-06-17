@@ -399,6 +399,22 @@ step "Launching the Hermes setup wizard"
             echo ""
             bash "$script_dir/components/skillspector-setup.sh"
         fi
+        if [[ -f "$script_dir/components/superpowers-setup.sh" ]]; then
+            echo ""
+            bash "$script_dir/components/superpowers-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/omnigent-setup.sh" ]]; then
+            echo ""
+            bash "$script_dir/components/omnigent-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/hyperextract-setup.sh" ]]; then
+            echo ""
+            bash "$script_dir/components/hyperextract-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/paddleocr-mcp-setup.sh" ]]; then
+            echo ""
+            bash "$script_dir/components/paddleocr-mcp-setup.sh"
+        fi
         step "Hermes Stack setup complete!"
         log "Run 'claude' in any project directory to start."
     else

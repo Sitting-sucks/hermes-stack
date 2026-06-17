@@ -33,6 +33,11 @@ curl -fsSL https://raw.githubusercontent.com/Sitting-sucks/hermes-stack/main/ins
 - **Smart model routing** — deepseek primary, Claude fallback
 - **Chat platform** — talk to your AI on Discord, Slack, or Telegram
 
+| **New in v2026.6.17**
+
+- **Hyper-Extract** — CLI-first knowledge extraction engine. Turns unstructured text into 8 types of structured knowledge: graphs, hypergraphs, temporal/spatial graphs, and more. One `he parse` command. 80+ domain templates. Complements graphify and understand-anything with deeper extraction capabilities. Apache 2.0.
+- **PaddleOCR MCP** — Industrial OCR as an MCP server for AI agents. PP-OCRv6 text detection + PP-StructureV3 layout parsing. Your agents can OCR images, scanned PDFs, and documents on demand. Closes the gap MarkItDown can't handle (images, scans). 45K+ stars, Apache 2.0.
+
 ## Prerequisites — What You Need
 
 The Hermes Stack runs locally on your machine. Here's exactly what you need before you start:
