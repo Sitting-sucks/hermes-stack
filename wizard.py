@@ -95,6 +95,7 @@ class WizardAnswers:
     n8n_url: str = ""
     n8n_api_key: str = ""
     obsidian_vault_path: str = ""
+    coding_agent: str = "claude"
 
     def to_redacted_dict(self) -> dict:
         d = asdict(self)
@@ -380,6 +381,35 @@ def prompt_obsidian() -> str:
     return path
 
 
+def prompt_coding_agent() -> str:
+    section("Coding Agent")
+    info(
+        "Which coding agent do you want wired into the stack? All options get "
+        "the same MCP servers (memory, code intelligence, automation)."
+    )
+    Console().print(
+        Table(box=None, show_header=False, show_lines=False, pad_edge=False)
+        .grid(2, 1)
+    )
+    # Display options with descriptions
+    options = Table(box=None, show_header=False, pad_edge=False, show_lines=False)
+    options.add_column("", style="bold cyan", width=8)
+    options.add_column("", style="white")
+    options.add_row("claude", "Claude Code — best for Claude Max ($100/mo, unlimited Opus)")
+    options.add_row("codex",  "OpenAI Codex CLI — best for ChatGPT Plus/Pro subscribers")
+    options.add_row("cursor", "Cursor IDE — best for visual IDE users (GUI app)")
+    options.add_row("none",   "Skip — I'll wire my own coding agent later")
+    Console().print(options)
+    Console().print()
+
+    choice = Prompt.ask(
+        "[bold]Your choice[/bold]",
+        choices=["claude", "codex", "cursor", "none"],
+        default="claude",
+    ).strip().lower()
+    return choice
+
+
 # ---------------------------------------------------------------------------
 # Config writers
 # ---------------------------------------------------------------------------
@@ -420,6 +450,7 @@ def render_env(answers: WizardAnswers, installer_dir: Path) -> str:
         N8N_BASE_URL=answers.n8n_url or "http://localhost:5678",
         N8N_API_KEY=answers.n8n_api_key or "YOUR_N8N_API_KEY_HERE",
         OBSIDIAN_VAULT_PATH=answers.obsidian_vault_path or str(Path.home() / "Knowledge Vault"),
+        CODING_AGENT=answers.coding_agent,
     )
 
 
@@ -642,6 +673,7 @@ def run_wizard(installer_dir: Path) -> WizardAnswers:
     answers.n8n_url = n8n_url
     answers.n8n_api_key = n8n_api_key
     answers.obsidian_vault_path = prompt_obsidian()
+    answers.coding_agent = prompt_coding_agent()
     return answers
 
 

@@ -9,8 +9,8 @@ curl -fsSL https://raw.githubusercontent.com/Sitting-sucks/hermes-stack/main/ins
 ## What you get
 
 - **Hermes Agent** — your AI teammate, running on your machine
-- **Claude Code** — coding agent with Opus-level reasoning
-- **agentmemory** — remembers everything across sessions
+- **Coding agent of your choice** — Claude Code, OpenAI Codex, or Cursor IDE (all wired with the same MCP servers)
+- **Obsidian Knowledge Vault** — persistent, unlimited memory in plain markdown you own
 - **codegraph** — instant code understanding, no grep
 - **understand-anything** — visual knowledge graph with guided tours & business domain mapping
 - **n8n-mcp** — workflow automation via natural language

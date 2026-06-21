@@ -214,7 +214,6 @@ install_python_deps() {
 install_npm_packages() {
     step "Installing global npm packages"
     local packages=(
-        "@anthropic-ai/claude-code"
         "@agentmemory/agentmemory"
         "@colbymchenry/codegraph"
         "@zilliz/claude-context-mcp"
@@ -326,6 +325,10 @@ step "Launching the Hermes setup wizard"
 
     if [[ $wizard_exit -eq 0 ]]; then
         install_understand_anything
+        step "Installing coding agent"
+        if [[ -f "$script_dir/components/coding-agent-setup.sh" ]]; then
+            bash "$script_dir/components/coding-agent-setup.sh"
+        fi
         step "Installing optional stack components"
         local script_dir
         script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
