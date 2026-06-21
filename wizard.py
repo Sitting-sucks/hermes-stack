@@ -94,6 +94,7 @@ class WizardAnswers:
     enable_n8n: bool = False
     n8n_url: str = ""
     n8n_api_key: str = ""
+    obsidian_vault_path: str = ""
 
     def to_redacted_dict(self) -> dict:
         d = asdict(self)
@@ -362,6 +363,23 @@ def prompt_n8n() -> tuple[bool, str, str]:
     return True, url, api_key
 
 
+def prompt_obsidian() -> str:
+    section("Obsidian Knowledge Vault")
+    info(
+        "Your persistent, unlimited memory — shared between you, your AI agent, "
+        "and your coding agent. Plain markdown files you own."
+    )
+    if not Confirm.ask("Scaffold an Obsidian vault for persistent memory?", default=True):
+        return ""
+
+    default_path = str(Path.home() / "Knowledge Vault")
+    path = Prompt.ask(
+        "[bold]Vault location[/bold]",
+        default=default_path,
+    ).strip()
+    return path
+
+
 # ---------------------------------------------------------------------------
 # Config writers
 # ---------------------------------------------------------------------------
@@ -401,6 +419,7 @@ def render_env(answers: WizardAnswers, installer_dir: Path) -> str:
         GOOGLE_WORKSPACE_EMAIL=answers.google_email or "YOUR_GOOGLE_EMAIL_HERE",
         N8N_BASE_URL=answers.n8n_url or "http://localhost:5678",
         N8N_API_KEY=answers.n8n_api_key or "YOUR_N8N_API_KEY_HERE",
+        OBSIDIAN_VAULT_PATH=answers.obsidian_vault_path or str(Path.home() / "Knowledge Vault"),
     )
 
 
@@ -622,6 +641,7 @@ def run_wizard(installer_dir: Path) -> WizardAnswers:
     answers.enable_n8n = enable_n8n
     answers.n8n_url = n8n_url
     answers.n8n_api_key = n8n_api_key
+    answers.obsidian_vault_path = prompt_obsidian()
     return answers
 
 

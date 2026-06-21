@@ -398,6 +398,10 @@ step "Launching the Hermes setup wizard"
         if [[ -f "$script_dir/components/webwright-setup.sh" ]]; then
             bash "$script_dir/components/webwright-setup.sh"
         fi
+        if [[ -f "$script_dir/components/obsidian-vault-setup.sh" ]]; then
+            echo ""
+            bash "$script_dir/components/obsidian-vault-setup.sh"
+        fi
         if [[ -f "$script_dir/components/codebase-memory-mcp-setup.sh" ]]; then
             echo ""
             bash "$script_dir/components/codebase-memory-mcp-setup.sh"
