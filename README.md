@@ -29,11 +29,17 @@ curl -fsSL https://raw.githubusercontent.com/Sitting-sucks/hermes-stack/main/ins
 - **Gemini CLI** — Google's open-source terminal AI agent. Free Gemini 2.5 Pro with 1M token context. Backup coding agent with Google Search grounding. 60 req/min, 1000 req/day free.
 - **ContextGem** — LLM-powered structured data extraction from documents. Contracts, reports, research papers → structured JSON with paragraph-level references and justifications. Part of the Sitting Sucks content pipeline.
 - **agent-skills (addyosmani)** — production-grade engineering skills from Google Chrome's Addy Osmani. v0.6.0: 7 slash commands, 24 skills, 3-tier orchestration (Personas → Skills → Commands). Parallel /ship runs code-reviewer, security-auditor, and test-engineer concurrently. New: doubt-driven-development (adversarial fresh-context review on in-flight decisions), source-driven-development (grounds framework decisions in official docs). Encodes Google engineering culture: spec-driven, test-first, security review, trunk-based deployment.
+- **codebase-memory-mcp** — fastest code intelligence engine (158 languages, sub-ms queries, 99% fewer tokens)
+- **OpenMontage** — agentic video production system (12 pipelines, 52 tools, 500+ skills)
 - **20+ professional skills** — engineering workflows pre-loaded
 - **Smart model routing** — deepseek primary, Claude fallback
 - **Chat platform** — talk to your AI on Discord, Slack, or Telegram
 
-| **New in v2026.6.17**
+| **New in v2026.6.18** |
+- **codebase-memory-mcp** — The fastest code intelligence engine for AI agents. Full-indexes an average repo in milliseconds, Linux kernel in 3 minutes. 158 languages, sub-ms structural queries, 99% fewer tokens. Single static C binary — no Docker, no runtime deps, no API key. 14 MCP tools. Auto-detects and configures Hermes, Claude Code, Codex, Gemini CLI, Cursor, and 7 other agents. MIT license. 4K+ stars, trending #1 on GitHub.
+- **OpenMontage** — World's first open-source, agentic video production system. 12 production pipelines, 52 tools, 500+ agent skills. Turn your AI coding assistant into a full video production studio. Makes real videos from free stock footage + open archives — not the "animate stills" trick. Multi-point self-review: ffprobe validation, frame sampling, audio level analysis. Sitting Sucks content pipeline integration. AGPL-3.0. 5.6K+ stars.
+
+| **New in v2026.6.17**|
 
 - **Hyper-Extract** — CLI-first knowledge extraction engine. Turns unstructured text into 8 types of structured knowledge: graphs, hypergraphs, temporal/spatial graphs, and more. One `he parse` command. 80+ domain templates. Complements graphify and understand-anything with deeper extraction capabilities. Apache 2.0.
 - **PaddleOCR MCP** — Industrial OCR as an MCP server for AI agents. PP-OCRv6 text detection + PP-StructureV3 layout parsing. Your agents can OCR images, scanned PDFs, and documents on demand. Closes the gap MarkItDown can't handle (images, scans). 45K+ stars, Apache 2.0.
