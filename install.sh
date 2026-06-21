@@ -380,6 +380,9 @@ step "Launching the Hermes setup wizard"
         if [[ -f "$script_dir/components/last30days-setup.sh" ]]; then
             bash "$script_dir/components/last30days-setup.sh"
         fi
+        if [[ -f "$script_dir/components/claude-hud-setup.sh" ]]; then
+            bash "$script_dir/components/claude-hud-setup.sh"
+        fi
         if [[ -f "$script_dir/components/open-notebook-setup.sh" ]]; then
             bash "$script_dir/components/open-notebook-setup.sh"
         fi
@@ -394,6 +397,14 @@ step "Launching the Hermes setup wizard"
         fi
         if [[ -f "$script_dir/components/webwright-setup.sh" ]]; then
             bash "$script_dir/components/webwright-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/codebase-memory-mcp-setup.sh" ]]; then
+            echo ""
+            bash "$script_dir/components/codebase-memory-mcp-setup.sh"
+        fi
+        if [[ -f "$script_dir/components/openmontage-setup.sh" ]]; then
+            echo ""
+            bash "$script_dir/components/openmontage-setup.sh"
         fi
         if [[ -f "$script_dir/components/skillspector-setup.sh" ]]; then
             echo ""

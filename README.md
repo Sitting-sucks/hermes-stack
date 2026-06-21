@@ -34,6 +34,8 @@ curl -fsSL https://raw.githubusercontent.com/Sitting-sucks/hermes-stack/main/ins
 - **20+ professional skills** — engineering workflows pre-loaded
 - **Smart model routing** — deepseek primary, Claude fallback
 - **Chat platform** — talk to your AI on Discord, Slack, or Telegram
+- **Claude HUD** — real-time heads-up display for Claude Code. Context health, tool activity, subagent tracking, rate limits — always visible below your input
+- **Superpowers** — battle-tested agentic dev methodology (227K+ stars). Enforces design → plan → TDD → review workflow so your agent ships clean code
 
 | **New in v2026.6.18** |
 - **codebase-memory-mcp** — The fastest code intelligence engine for AI agents. Full-indexes an average repo in milliseconds, Linux kernel in 3 minutes. 158 languages, sub-ms structural queries, 99% fewer tokens. Single static C binary — no Docker, no runtime deps, no API key. 14 MCP tools. Auto-detects and configures Hermes, Claude Code, Codex, Gemini CLI, Cursor, and 7 other agents. MIT license. 4K+ stars, trending #1 on GitHub.
